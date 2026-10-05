@@ -1,12 +1,21 @@
-// Wait for the webpage to fully load before running the code
+// Sample database data (jo database se nikal kar aaya ho)
+const databaseData = [
+    { id: 1, name: "Ali", role: "Student" },
+    { id: 2, name: "Ayesha", role: "Developer" },
+    { id: 3, name: "Ahmed", role: "Admin" }
+];
+
 document.addEventListener("DOMContentLoaded", () => {
     const button = document.getElementById("clickBtn");
     const message = document.getElementById("message");
 
-    // Add a click event listener to the button
     button.addEventListener("click", () => {
-        message.textContent = "Hello! Your JavaScript is working successfully with Netlify!";
+        // Database data ko browser par reflect karna
+        let output = "Database Records Found:<br>";
+        databaseData.forEach(user => {
+            output += `- Name: ${user.name} (${user.role})<br>`;
+        });
+        
+        message.innerHTML = output;
     });
-
-    console.log("Script loaded and running properly!");
 });
